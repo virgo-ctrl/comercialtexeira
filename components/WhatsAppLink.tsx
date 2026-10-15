@@ -7,6 +7,8 @@ interface Props {
   className?: string
   children: React.ReactNode
   rotuloAria?: string
+  /** Número de outro destinatário (vendedor). Sem ele, vai para o WhatsApp da loja. */
+  numero?: string
 }
 
 /**
@@ -14,10 +16,10 @@ interface Props {
  * no TBT. O evento Contact (Pixel + servidor, mesmo event_id) sai do listener único em RastreioWhatsApp,
  * que lê os atributos data-* deste link.
  */
-export default function WhatsAppLink({ mensagem, produto, interesse, className, children, rotuloAria }: Props) {
+export default function WhatsAppLink({ mensagem, produto, interesse, className, children, rotuloAria, numero }: Props) {
   return (
     <a
-      href={linkWhatsApp(mensagem)}
+      href={linkWhatsApp(mensagem, numero)}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={rotuloAria}

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import MapaLoja from '@/components/MapaLoja'
 import JsonLd from '@/components/JsonLd'
 import LeadForm from '@/components/LeadForm'
@@ -35,6 +36,13 @@ export default function Contato() {
             <WhatsAppIcon tamanho={22} />
             Chamar no WhatsApp
           </WhatsAppLink>
+          <p className="mt-4">
+            Quer falar com uma pessoa específica?{' '}
+            <Link href="/vendedores" className="font-semibold text-brand-strong underline">
+              Escolha um vendedor
+            </Link>
+            .
+          </p>
           <address className="mt-8 space-y-1 not-italic">
             <p className="font-semibold">{ENDERECO_TEXTO}</p>
             <p>WhatsApp: {SITE.whatsapp.exibicao}</p>

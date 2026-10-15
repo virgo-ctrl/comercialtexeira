@@ -51,6 +51,9 @@ export default function Footer() {
               </a>
             </p>
             <Dado rotulo="Horário" valor={SITE.horario} />
+            <p>
+              <Link href="/vendedores" className="inline-block py-1 underline">Falar com um vendedor</Link>
+            </p>
           </address>
         </div>
       </div>

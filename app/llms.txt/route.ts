@@ -18,6 +18,7 @@ Marcas: ${SITE.marcas.join(', ')}
 
 - [Início](${urlAbsoluta('/')}): apresentação da loja, categorias, marcas e guias de serviço
 - [Produtos](${urlAbsoluta('/produtos')}): catálogo com busca e filtro por categoria
+- [Fale com um vendedor](${urlAbsoluta('/vendedores')}): WhatsApp de cada vendedor
 - [Contato](${urlAbsoluta('/contato')}): WhatsApp, endereço e formulário
 
 ## Categorias
