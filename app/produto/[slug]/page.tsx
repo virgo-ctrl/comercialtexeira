@@ -6,7 +6,7 @@ import Image from 'next/image'
 import ViewContentEvent from '@/components/ViewContentEvent'
 import WhatsAppIcon from '@/components/WhatsAppIcon'
 import WhatsAppLink from '@/components/WhatsAppLink'
-import { PRODUTOS, categoriaPorSlug, produtoPorSlug } from '@/lib/catalogo'
+import { PRODUTOS, categoriaPorSlug, produtoIndexavel, produtoPorSlug } from '@/lib/catalogo'
 import { schemaMigalhas, schemaProduto } from '@/lib/schema'
 import { metaPagina } from '@/lib/seo'
 import { MOSTRAR_PENDENTES } from '@/lib/site'
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     descricao: `${p.nome} na Comercial Teixeira, em Caruaru. Peça valor e disponibilidade pelo WhatsApp.`,
     caminho: `/produto/${p.slug}`,
     // Página sem marca, foto e ficha ainda é conteúdo raso: fica fora do índice até o cliente confirmar os dados.
-    indexar: p.dadosConfirmados,
+    indexar: produtoIndexavel(p),
   })
 }
 
