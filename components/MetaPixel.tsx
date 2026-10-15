@@ -31,14 +31,25 @@ function carregarScript() {
 export default function MetaPixel() {
   const pathname = usePathname()
 
-  // O stub entra na hora (eventos ficam na fila); o script da Meta só carrega quando o navegador está ocioso,
-  // para não pesar no LCP.
+  // O stub entra na hora (PageView e demais eventos ficam na fila). O script da Meta, que sozinho leva
+  // ~400 ms de CPU, só carrega na primeira interação ou depois de 4,5 s, para não pesar no TBT e no LCP.
   useEffect(() => {
     prepararFbq()
-    const ric = (window as unknown as { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => void })
-      .requestIdleCallback
-    if (ric) ric(carregarScript, { timeout: 3000 })
-    else setTimeout(carregarScript, 1500)
+    let carregado = false
+    const eventos = ['pointerdown', 'keydown', 'scroll', 'touchstart'] as const
+    const carregar = () => {
+      if (carregado) return
+      carregado = true
+      eventos.forEach((e) => window.removeEventListener(e, carregar))
+      clearTimeout(timer)
+      carregarScript()
+    }
+    const timer = setTimeout(carregar, 4500)
+    eventos.forEach((e) => window.addEventListener(e, carregar, { passive: true, once: true }))
+    return () => {
+      clearTimeout(timer)
+      eventos.forEach((e) => window.removeEventListener(e, carregar))
+    }
   }, [])
 
   useEffect(() => {
