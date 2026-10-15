@@ -1,0 +1,29 @@
+/*
+ * TOKENS TEMPORÁRIOS.
+ * O design system da Comercial Teixeira está sendo produzido pelo agente Antigravity
+ * (Comercial Teixeira/Design/design-system-comercial-teixeira.md no vault).
+ * Quando ele chegar, só este arquivo muda: cores, fontes, raios e sombras.
+ * Nenhum componente usa valor fixo de cor.
+ */
+@theme {
+  --color-ink: #1b1b1a;
+  --color-ink-soft: #4a4a47;
+  --color-surface: #ffffff;
+  --color-canvas: #f4f3f0;
+  --color-line: #dedcd6;
+  --color-brand: #b4380f;
+  --color-brand-strong: #8f2c0c;
+  --color-brand-soft: #fbebe4;
+  --color-whatsapp: #128c4a;
+  --color-whatsapp-strong: #0e6f3a;
+  --color-pending-bg: #fff6cf;
+  --color-pending-line: #d9a900;
+  --color-pending-ink: #5b4600;
+
+  --font-display: var(--font-display-fam), 'Arial Narrow', sans-serif;
+  --font-body: var(--font-body-fam), system-ui, sans-serif;
+
+  --radius-card: 14px;
+  --radius-pill: 9999px;
+  --shadow-card: 0 6px 20px rgba(27, 27, 26, 0.08);
+}

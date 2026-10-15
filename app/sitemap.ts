@@ -1,0 +1,26 @@
+import type { MetadataRoute } from 'next'
+import { CATEGORIAS, PRODUTOS } from '@/lib/catalogo'
+import { urlAbsoluta } from '@/lib/site'
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const agora = new Date()
+  return [
+    { url: urlAbsoluta('/'), lastModified: agora, changeFrequency: 'weekly', priority: 1 },
+    { url: urlAbsoluta('/produtos'), lastModified: agora, changeFrequency: 'weekly', priority: 0.9 },
+    ...CATEGORIAS.map((c) => ({
+      url: urlAbsoluta(`/categoria/${c.slug}`),
+      lastModified: agora,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    })),
+    // Só produtos com dados confirmados entram: o resto está noindex.
+    ...PRODUTOS.filter((p) => p.dadosConfirmados).map((p) => ({
+      url: urlAbsoluta(`/produto/${p.slug}`),
+      lastModified: agora,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    })),
+    { url: urlAbsoluta('/contato'), lastModified: agora, changeFrequency: 'yearly', priority: 0.6 },
+    { url: urlAbsoluta('/politica-de-privacidade'), lastModified: agora, changeFrequency: 'yearly', priority: 0.2 },
+  ]
+}
