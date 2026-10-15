@@ -1,7 +1,4 @@
-'use client'
-
 import { linkWhatsApp } from '@/lib/whatsapp'
-import { dispararPixel, enviarEvento, novoEventId } from '@/lib/tracking'
 
 interface Props {
   mensagem: string
@@ -14,21 +11,21 @@ interface Props {
   numero?: string
 }
 
-/** Link do WhatsApp que registra o evento Contact (Pixel + servidor, mesmo event_id). */
+/**
+ * Link do WhatsApp. Não é componente de cliente de propósito: a home tem mais de 20 botões e hidratar cada um pesava
+ * no TBT. O evento Contact (Pixel + servidor, mesmo event_id) sai do listener único em RastreioWhatsApp,
+ * que lê os atributos data-* deste link.
+ */
 export default function WhatsAppLink({ mensagem, produto, interesse, className, children, rotuloAria, numero }: Props) {
-  function aoClicar() {
-    const eventId = novoEventId('Contact')
-    dispararPixel('Contact', eventId, { content_name: produto || interesse || 'geral' })
-    enviarEvento({ eventId, produto, interesse })
-  }
-
   return (
     <a
       href={linkWhatsApp(mensagem, numero)}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={rotuloAria}
-      onClick={aoClicar}
+      data-wa=""
+      data-produto={produto}
+      data-interesse={interesse}
       className={className}
     >
       {children}

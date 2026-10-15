@@ -22,8 +22,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const cat = categoriaPorSlug(slug)
   if (!cat) return {}
   return metaPagina({
-    titulo: `${cat.nome}: máquinas e ferramentas em Caruaru`,
-    descricao: `${cat.resumo} Peça valor e disponibilidade pelo WhatsApp da Comercial Teixeira, em Caruaru.`,
+    titulo: `${cat.nome} em Caruaru`,
+    descricao: `${cat.texto} Peça valor e disponibilidade pelo WhatsApp da Comercial Teixeira, em Caruaru.`,
     caminho: `/categoria/${cat.slug}`,
   })
 }
@@ -48,7 +48,7 @@ export default async function Categoria({ params }: { params: Promise<{ slug: st
 
       <TopoPagina
         titulo={cat.nome}
-        texto={cat.resumo}
+        texto={cat.texto}
         migalhas={
           <>
             <Link href="/">Início</Link> / <Link href="/produtos">Produtos</Link> / {cat.nome}
@@ -56,17 +56,15 @@ export default async function Categoria({ params }: { params: Promise<{ slug: st
         }
       />
       <div className="mx-auto max-w-6xl px-5 py-10">
-      {produtos.length ? (
-        <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {produtos.map((p) => (
-            <li key={p.slug}>
-              <ProductCard produto={p} />
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <div className="rounded-[var(--radius-card)] border border-dashed border-line bg-surface p-8">
-          <p className="font-semibold">Ainda não há produtos publicados nesta categoria.</p>
+        <div className="mb-8 rounded-[var(--radius-card)] border border-line bg-surface p-5">
+          <p className="font-display text-xl font-bold uppercase tracking-wide text-brand-strong">Pergunte por</p>
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {cat.buscas.map((b) => (
+              <li key={b} className="rounded-full bg-brand-soft px-3 py-1 text-sm font-semibold text-brand-strong">
+                {b}
+              </li>
+            ))}
+          </ul>
           <WhatsAppLink
             mensagem={mensagemCategoria(cat.nome)}
             interesse={cat.nome}
@@ -76,7 +74,19 @@ export default async function Categoria({ params }: { params: Promise<{ slug: st
             Perguntar no WhatsApp
           </WhatsAppLink>
         </div>
-      )}
+        {produtos.length ? (
+          <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {produtos.map((p) => (
+              <li key={p.slug}>
+                <ProductCard produto={p} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="rounded-[var(--radius-card)] border border-dashed border-line bg-surface p-6 text-ink-soft">
+            Os produtos desta categoria ainda não estão publicados no site. Chame a loja no WhatsApp e pergunte pelo item.
+          </p>
+        )}
       </div>
     </>
   )

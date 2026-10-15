@@ -13,7 +13,7 @@ import {
 } from '@/lib/marca'
 import { SITE } from '@/lib/site'
 
-export const alt = `${SITE.nome}, máquinas e ferramentas em Caruaru`
+export const alt = `${SITE.nome}, peças, ferramentas e máquinas em Caruaru`
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -43,8 +43,8 @@ export default function Image() {
               <path d={WORDMARK_TEIXEIRA} fill="#ffffff" />
             </g>
           </svg>
-          <div style={{ fontSize: 66, fontWeight: 800, marginTop: 36, lineHeight: 1.05 }}>Máquinas e ferramentas em Caruaru</div>
-          <div style={{ fontSize: 30, marginTop: 20, color: '#cfe0d3' }}>Peça valor e disponibilidade pelo WhatsApp</div>
+          <div style={{ fontSize: 66, fontWeight: 800, marginTop: 36, lineHeight: 1.05 }}>Peça, ferramenta e máquina no mesmo balcão</div>
+          <div style={{ fontSize: 30, marginTop: 20, color: '#cfe0d3' }}>Em Caruaru. Peça valor e disponibilidade pelo WhatsApp</div>
         </div>
       </div>
     ),
