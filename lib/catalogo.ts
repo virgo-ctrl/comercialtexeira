@@ -119,6 +119,11 @@ export const PRODUTOS: Produto[] = [
 
 export const TEXTO_PENDENTE_PRODUTO = `Descrição, marca e ficha técnica: ${PENDENTE}`
 
+/** Página de produto indexável: tem dados confirmados ou ao menos nome e foto reais da loja. */
+export function produtoIndexavel(p: Produto) {
+  return p.dadosConfirmados || Boolean(p.imagem)
+}
+
 export function categoriaPorSlug(slug: string) {
   return CATEGORIAS.find((c) => c.slug === slug)
 }

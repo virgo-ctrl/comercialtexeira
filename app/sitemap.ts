@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { CATEGORIAS, PRODUTOS } from '@/lib/catalogo'
+import { CATEGORIAS, PRODUTOS, produtoIndexavel } from '@/lib/catalogo'
 import { urlAbsoluta } from '@/lib/site'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -13,8 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     })),
-    // Só produtos com dados confirmados entram: o resto está noindex.
-    ...PRODUTOS.filter((p) => p.dadosConfirmados).map((p) => ({
+    // Produtos com foto e nome reais da loja entram; sem foto nem dados confirmados ficam noindex.
+    ...PRODUTOS.filter(produtoIndexavel).map((p) => ({
       url: urlAbsoluta(`/produto/${p.slug}`),
       lastModified: agora,
       changeFrequency: 'weekly' as const,

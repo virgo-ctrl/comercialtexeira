@@ -1,3 +1,4 @@
+import MapaLoja from '@/components/MapaLoja'
 import Link from 'next/link'
 import IconeCategoria from '@/components/IconeCategoria'
 import JsonLd from '@/components/JsonLd'
@@ -183,6 +184,7 @@ export default function Home() {
               </ul>
             </div>
           </div>
+          <MapaLoja className="mt-6" />
         </div>
       </section>
 

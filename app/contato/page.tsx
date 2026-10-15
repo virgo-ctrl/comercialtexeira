@@ -1,3 +1,4 @@
+import MapaLoja from '@/components/MapaLoja'
 import JsonLd from '@/components/JsonLd'
 import LeadForm from '@/components/LeadForm'
 import { Dado } from '@/components/Pendente'
@@ -40,6 +41,7 @@ export default function Contato() {
             <p>Telefone: <a className="underline" href={`tel:${SITE.telefone.tel}`}>{SITE.telefone.exibicao}</a></p>
             <Dado rotulo="Horário de atendimento" valor={SITE.horario} />
           </address>
+          <MapaLoja className="mt-6" />
         </div>
         <LeadForm />
       </div>
