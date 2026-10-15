@@ -1,6 +1,6 @@
 import Pendente from '@/components/Pendente'
 import { metaPagina } from '@/lib/seo'
-import { SITE } from '@/lib/site'
+import { MOSTRAR_PENDENTES, SITE } from '@/lib/site'
 
 export const metadata = metaPagina({
   titulo: 'Política de privacidade',
@@ -12,13 +12,19 @@ export default function Politica() {
   return (
     <div className="mx-auto max-w-3xl px-5 py-10">
       <h1 className="text-5xl font-bold uppercase">Política de privacidade</h1>
-      <p className="mt-3 rounded border border-pending-line bg-pending-bg p-3 text-sm text-pending-ink">
-        Rascunho técnico. O texto jurídico final precisa ser revisado e confirmado pelo cliente antes de ir a público.
-      </p>
+      {MOSTRAR_PENDENTES && (
+        <p className="mt-3 rounded border border-pending-line bg-pending-bg p-3 text-sm text-pending-ink">
+          Rascunho técnico. O texto jurídico final precisa ser revisado e confirmado pelo cliente antes de ir a público.
+        </p>
+      )}
       <div className="mt-6 space-y-5 text-ink-soft">
         <p>
           Esta página explica quais dados o site da {SITE.nome} coleta, para que servem e como pedir a exclusão deles.
-          Responsável: <Pendente>razão social e CNPJ: CONFIRMAR COM O CLIENTE</Pendente>.
+          {MOSTRAR_PENDENTES && (
+            <>
+              {' '}Responsável: <Pendente>razão social e CNPJ: CONFIRMAR COM O CLIENTE</Pendente>.
+            </>
+          )}
         </p>
         <h2 className="text-3xl font-bold uppercase text-ink">Dados que coletamos</h2>
         <p>

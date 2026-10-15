@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import JsonLd from '@/components/JsonLd'
 import ProductCard from '@/components/ProductCard'
+import TopoPagina from '@/components/TopoPagina'
 import ViewContentEvent from '@/components/ViewContentEvent'
 import WhatsAppIcon from '@/components/WhatsAppIcon'
 import WhatsAppLink from '@/components/WhatsAppLink'
@@ -34,7 +35,7 @@ export default async function Categoria({ params }: { params: Promise<{ slug: st
   const produtos = produtosDaCategoria(cat.slug)
 
   return (
-    <div className="mx-auto max-w-6xl px-5 py-10">
+    <>
       <JsonLd
         dados={schemaMigalhas([
           { nome: 'Início', caminho: '/' },
@@ -45,14 +46,18 @@ export default async function Categoria({ params }: { params: Promise<{ slug: st
       <JsonLd dados={schemaColecao(cat, produtos)} />
       <ViewContentEvent nome={cat.nome} categoria={cat.nome} />
 
-      <nav aria-label="Você está em" className="text-sm text-ink-soft">
-        <Link href="/" className="underline">Início</Link> / <Link href="/produtos" className="underline">Produtos</Link> / {cat.nome}
-      </nav>
-      <h1 className="mt-3 text-5xl font-bold uppercase">{cat.nome}</h1>
-      <p className="mt-2 max-w-xl text-ink-soft">{cat.resumo}</p>
-
+      <TopoPagina
+        titulo={cat.nome}
+        texto={cat.resumo}
+        migalhas={
+          <>
+            <Link href="/">Início</Link> / <Link href="/produtos">Produtos</Link> / {cat.nome}
+          </>
+        }
+      />
+      <div className="mx-auto max-w-6xl px-5 py-10">
       {produtos.length ? (
-        <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {produtos.map((p) => (
             <li key={p.slug}>
               <ProductCard produto={p} />
@@ -60,7 +65,7 @@ export default async function Categoria({ params }: { params: Promise<{ slug: st
           ))}
         </ul>
       ) : (
-        <div className="mt-8 rounded-[var(--radius-card)] border border-dashed border-line bg-surface p-8">
+        <div className="rounded-[var(--radius-card)] border border-dashed border-line bg-surface p-8">
           <p className="font-semibold">Ainda não há produtos publicados nesta categoria.</p>
           <WhatsAppLink
             mensagem={mensagemCategoria(cat.nome)}
@@ -72,6 +77,7 @@ export default async function Categoria({ params }: { params: Promise<{ slug: st
           </WhatsAppLink>
         </div>
       )}
-    </div>
+      </div>
+    </>
   )
 }
