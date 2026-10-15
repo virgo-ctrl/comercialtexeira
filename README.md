@@ -18,6 +18,7 @@ npm run build && npm start
 | `/produtos` | Catálogo com busca e filtro por categoria |
 | `/categoria/[slug]` | oficina, agro, piscina, limpeza, construcao |
 | `/produto/[slug]` | Página do produto (noindex até o cliente confirmar os dados) |
+| `/vendedores` | Um card por vendedor com botão de WhatsApp (evento Contact). Dados em `lib/vendedores.ts` |
 | `/contato` | WhatsApp, endereço e formulário (evento Lead) |
 | `/obrigado`, `/politica-de-privacidade` | Apoio |
 | `/sitemap.xml`, `/robots.txt`, `/llms.txt` | SEO e LLMs |

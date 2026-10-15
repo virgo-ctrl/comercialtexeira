@@ -17,6 +17,7 @@ Cidades atendidas: ${SITE.regiao.join(', ')}
 
 - [Início](${urlAbsoluta('/')}): apresentação da loja e categorias
 - [Produtos](${urlAbsoluta('/produtos')}): catálogo com busca e filtro por categoria
+- [Fale com um vendedor](${urlAbsoluta('/vendedores')}): WhatsApp de cada vendedor
 - [Contato](${urlAbsoluta('/contato')}): WhatsApp, endereço e formulário
 
 ## Categorias
