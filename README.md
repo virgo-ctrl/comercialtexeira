@@ -39,7 +39,8 @@ Para a equipe ver o que ainda falta, defina `SHOW_PENDING=1`. Ela é lida no bui
 A paleta vem da logo real da loja: verde `#06A24E` e verde-limão `#A8D23C`, em dois arcos. `#06A24E` sobre branco tem contraste de 3,34:1 e reprova AA, então ele só aparece em gráficos (arcos, faixas). Botões com texto branco usam `#067a3b` (5,45:1) e textos e hover usam `#05683a` (6,89:1).
 
 - Tokens: `app/tokens.css`. Nenhum componente usa cor fixa (exceções: `opengraph-image.tsx`, `icon.tsx` e `themeColor`, que usam `lib/marca.ts` ou hex direto porque o `next/og` não lê variável CSS).
-- Marca: `components/Marca.tsx` (logo e arcos) e `lib/marca.ts` (geometria). É um redesenho vetorial provisório a partir do JPG do Instagram. Quando houver o SVG oficial, troque só esses dois arquivos.
+- Marca: SVGs oficiais do Codex em `public/marca/` (completa, símbolo, horizontal, branca e PNGs 512/1024). Os caminhos também estão em `lib/marca.ts` e são usados por `components/Marca.tsx` (cabeçalho, rodapé e arcos do hero), `app/icon.tsx` e `app/opengraph-image.tsx`, porque o wordmark precisa ser recolorido no fundo escuro. Se o logo mudar, atualize os SVGs e rode de novo a extração dos caminhos para `lib/marca.ts`.
+- Tokens: idênticos ao bloco do design system v2 do Antigravity (`Design/design-system-comercial-teixeira.md`, seção 2.3).
 - Ícones das categorias: `components/IconeCategoria.tsx`.
 
 ## Pixel e API de Conversões
@@ -80,6 +81,6 @@ Workflow `[COMERCIAL TEIXEIRA] Site: leads e cliques no WhatsApp (planilha)` na 
 
 - Token da Meta com permissão sobre o pixel (o recebido em 15/10 só tem `read_ads_dataset_quality`).
 - Pixel `1165204005839913` (trocado em 15/10, o anterior era `1132095836241889`): **não foi possível verificar pela API da Meta por falta de permissão**. Conferir no Gerenciador de Eventos se ele recebe `PageView`, `Contact` e `Lead` e se o domínio está associado.
-- Logo vetorial oficial, fotos dos produtos e o design system v2 do Antigravity (o arquivo atual da pasta ainda descreve a paleta terracota antiga).
+- Fotos dos produtos.
 - Texto jurídico final da política de privacidade.
 - Domínio `comercialteixeira.com.br` apontado para a Vercel.

@@ -8,7 +8,7 @@ import WhatsAppIcon from './WhatsAppIcon'
 export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-surface/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-x-6 px-5 py-2.5">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-x-6 px-5 py-2">
         <Link href="/" aria-label={`${SITE.nome}, página inicial`}>
           <Logo />
         </Link>

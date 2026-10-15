@@ -10,7 +10,7 @@ export default function Footer() {
       <Arcos className="pointer-events-none absolute -bottom-24 -right-16 h-80 w-80 opacity-15" />
       <div className="relative mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:grid-cols-3">
         <div>
-          <Logo escuro />
+          <Logo escuro className="h-16 w-auto" />
           <p className="mt-4 text-sm text-on-dark-soft">Máquinas e ferramentas em Caruaru, Pernambuco.</p>
           <div className="mt-3 space-y-1 text-sm text-on-dark-soft">
             <Dado rotulo="Razão social" valor={SITE.razaoSocial} />

@@ -1,40 +1,50 @@
 import { ImageResponse } from 'next/og'
-import { ARCO_EXTERNO, ARCO_INTERNO, COR_ARCO_EXTERNO, COR_ARCO_INTERNO } from '@/lib/marca'
+import {
+  ARCO_EXTERNO,
+  ARCO_INTERNO,
+  COR_ARCO_EXTERNO,
+  COR_ARCO_INTERNO,
+  HORIZONTAL_SIMBOLO_TRANSFORM,
+  HORIZONTAL_TEXTO_TRANSFORM,
+  HORIZONTAL_VIEWBOX,
+  SIMBOLO_VIEWBOX,
+  WORDMARK_COMERCIAL,
+  WORDMARK_TEIXEIRA,
+} from '@/lib/marca'
 import { SITE } from '@/lib/site'
 
 export const alt = `${SITE.nome}, máquinas e ferramentas em Caruaru`
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
-// Cartão com os arcos da logo (redesenho vetorial provisório) em fundo verde-floresta.
+// Cartão com a logo oficial (versão para fundo escuro) e os arcos em fundo verde-floresta.
 export default function Image() {
   return new ImageResponse(
     (
-      <div
-        style={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          background: '#0b2a1a',
-          color: '#ffffff',
-          position: 'relative',
-        }}
-      >
+      <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', background: '#0b2a1a', color: '#ffffff', position: 'relative' }}>
         <svg
-          width="620"
-          height="620"
-          viewBox="0 0 100 100"
-          style={{ position: 'absolute', right: -90, top: 5, opacity: 0.95 }}
+          width="640"
+          height="640"
+          viewBox={SIMBOLO_VIEWBOX}
+          style={{ position: 'absolute', right: -60, top: -5, opacity: 0.9 }}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path d={ARCO_EXTERNO} fill={COR_ARCO_EXTERNO} />
-          <path d={ARCO_INTERNO} fill={COR_ARCO_INTERNO} />
+          <path d={ARCO_EXTERNO} fill={COR_ARCO_EXTERNO} fillRule="evenodd" />
+          <path d={ARCO_INTERNO} fill={COR_ARCO_INTERNO} fillRule="evenodd" />
         </svg>
         <div style={{ display: 'flex', flexDirection: 'column', padding: '0 80px', maxWidth: 760 }}>
-          <div style={{ fontSize: 32, color: '#a8d23c', letterSpacing: 4 }}>CARUARU, PERNAMBUCO</div>
-          <div style={{ fontSize: 104, fontWeight: 800, marginTop: 16, lineHeight: 1.02 }}>{SITE.nome}</div>
-          <div style={{ fontSize: 44, marginTop: 24, color: '#cfe0d3' }}>Máquinas e ferramentas</div>
+          <svg width="520" height="169" viewBox={HORIZONTAL_VIEWBOX} xmlns="http://www.w3.org/2000/svg">
+            <g transform={HORIZONTAL_SIMBOLO_TRANSFORM}>
+              <path d={ARCO_EXTERNO} fill={COR_ARCO_EXTERNO} fillRule="evenodd" />
+              <path d={ARCO_INTERNO} fill={COR_ARCO_INTERNO} fillRule="evenodd" />
+            </g>
+            <g transform={HORIZONTAL_TEXTO_TRANSFORM}>
+              <path d={WORDMARK_COMERCIAL} fill="#a8d23c" />
+              <path d={WORDMARK_TEIXEIRA} fill="#ffffff" />
+            </g>
+          </svg>
+          <div style={{ fontSize: 66, fontWeight: 800, marginTop: 36, lineHeight: 1.05 }}>Máquinas e ferramentas em Caruaru</div>
+          <div style={{ fontSize: 30, marginTop: 20, color: '#cfe0d3' }}>Peça valor e disponibilidade pelo WhatsApp</div>
         </div>
       </div>
     ),
