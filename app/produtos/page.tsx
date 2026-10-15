@@ -6,7 +6,7 @@ import { metaPagina } from '@/lib/seo'
 
 export const metadata = metaPagina({
   titulo: 'Produtos: máquinas e ferramentas em Caruaru',
-  descricao: 'Veja os produtos da Comercial Teixeira por categoria: oficina, agro, piscina, limpeza e construção. Peça pelo WhatsApp.',
+  descricao: 'Veja os produtos da Comercial Teixeira por família: peças, bombas, compressores, ferramentas, solda, EPI, limpeza e piscina. Peça pelo WhatsApp.',
   caminho: '/produtos',
 })
 

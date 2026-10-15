@@ -3,6 +3,7 @@ import { Barlow_Condensed, Inter } from 'next/font/google'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import MetaPixel from '@/components/MetaPixel'
+import RastreioWhatsApp from '@/components/RastreioWhatsApp'
 import WhatsAppFab from '@/components/WhatsAppFab'
 import { SITE } from '@/lib/site'
 import './globals.css'
@@ -13,7 +14,7 @@ const body = Inter({ subsets: ['latin'], variable: '--font-body-fam', display: '
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: { default: `${SITE.nome} | Máquinas e ferramentas em Caruaru-PE`, template: `%s | ${SITE.nome}` },
+  title: { default: `${SITE.nome} | Peças, ferramentas e máquinas em Caruaru-PE`, template: `%s | ${SITE.nome}` },
   description: SITE.descricao,
   applicationName: SITE.nome,
   formatDetection: { telephone: false },
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="conteudo">{children}</main>
         <Footer />
         <WhatsAppFab />
+        <RastreioWhatsApp />
         <noscript>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img

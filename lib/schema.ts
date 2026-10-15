@@ -1,4 +1,4 @@
-import { SITE, urlAbsoluta } from './site'
+import { CONFIRMADO_ENTREGA, CONFIRMADO_FOTO_PECA, SITE, urlAbsoluta } from './site'
 import type { Categoria, Produto } from './catalogo'
 
 // Só entra no JSON-LD o que foi confirmado. Horário, geo, imagem, preço e marca ficam de fora até virem do cliente.
@@ -90,8 +90,8 @@ export function schemaColecao(cat: Categoria, produtos: Produto[]) {
   return {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: `${cat.nome}: máquinas e ferramentas em Caruaru`,
-    description: cat.resumo,
+    name: `${cat.nome} em Caruaru`,
+    description: cat.texto,
     url: urlAbsoluta(`/categoria/${cat.slug}`),
     isPartOf: { '@id': `${SITE.url}/#site` },
     mainEntity: {
@@ -106,6 +106,10 @@ export function schemaColecao(cat: Categoria, produtos: Produto[]) {
   }
 }
 
+const lista = (itens: readonly string[]) => `${itens.slice(0, -1).join(', ')} e ${itens[itens.length - 1]}`
+
+// A mesma lista alimenta a seção de dúvidas da home e o JSON-LD FAQPage, então o que está atrás de uma flag
+// CONFIRMADO_* nunca aparece num sem o outro. Em produção só entram as respostas confirmadas.
 export const FAQ_CONFIRMADO = [
   {
     pergunta: 'Onde fica a Comercial Teixeira?',
@@ -116,7 +120,35 @@ export const FAQ_CONFIRMADO = [
     resposta: `Pelo WhatsApp ${SITE.whatsapp.exibicao}. O botão de cada produto abre a conversa com a mensagem já escrita.`,
   },
   {
-    pergunta: 'Quais cidades a loja atende?',
-    resposta: `O atendimento cobre ${SITE.regiao.slice(0, -1).join(', ')} e ${SITE.regiao[SITE.regiao.length - 1]}.`,
+    pergunta: 'Vocês têm peça para roçadeira, motosserra e compressor?',
+    resposta: 'Pergunte pelo modelo da máquina no WhatsApp e a loja confere se a peça está em estoque.',
   },
+  ...(CONFIRMADO_FOTO_PECA
+    ? [
+        {
+          pergunta: 'Posso mandar a foto da peça?',
+          resposta: 'Pode. Mande a foto e o modelo da máquina pelo WhatsApp que a loja confere.',
+        },
+      ]
+    : []),
+  {
+    pergunta: 'Quais marcas vocês vendem?',
+    resposta: `A loja trabalha com ${lista(SITE.marcas)}. Pergunte pela marca que você procura.`,
+  },
+  {
+    pergunta: 'O site mostra o preço dos produtos?',
+    resposta: 'Não. Valor e disponibilidade a loja informa pelo WhatsApp.',
+  },
+  {
+    pergunta: 'Quais cidades a loja atende?',
+    resposta: `O atendimento cobre ${lista(SITE.regiao)}.`,
+  },
+  ...(CONFIRMADO_ENTREGA
+    ? [
+        {
+          pergunta: 'A loja entrega?',
+          resposta: 'Pergunte pelo WhatsApp se a entrega chega ao seu endereço.',
+        },
+      ]
+    : []),
 ]
