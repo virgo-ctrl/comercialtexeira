@@ -10,10 +10,12 @@ interface Props {
   className?: string
   children: React.ReactNode
   rotuloAria?: string
+  /** Número de outro destinatário (vendedor). Sem ele, vai para o WhatsApp da loja. */
+  numero?: string
 }
 
 /** Link do WhatsApp que registra o evento Contact (Pixel + servidor, mesmo event_id). */
-export default function WhatsAppLink({ mensagem, produto, interesse, className, children, rotuloAria }: Props) {
+export default function WhatsAppLink({ mensagem, produto, interesse, className, children, rotuloAria, numero }: Props) {
   function aoClicar() {
     const eventId = novoEventId('Contact')
     dispararPixel('Contact', eventId, { content_name: produto || interesse || 'geral' })
@@ -22,7 +24,7 @@ export default function WhatsAppLink({ mensagem, produto, interesse, className, 
 
   return (
     <a
-      href={linkWhatsApp(mensagem)}
+      href={linkWhatsApp(mensagem, numero)}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={rotuloAria}

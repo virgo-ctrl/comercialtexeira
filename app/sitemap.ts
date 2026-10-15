@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly' as const,
       priority: 0.7,
     })),
+    { url: urlAbsoluta('/vendedores'), lastModified: agora, changeFrequency: 'yearly', priority: 0.6 },
     { url: urlAbsoluta('/contato'), lastModified: agora, changeFrequency: 'yearly', priority: 0.6 },
     { url: urlAbsoluta('/politica-de-privacidade'), lastModified: agora, changeFrequency: 'yearly', priority: 0.2 },
   ]
