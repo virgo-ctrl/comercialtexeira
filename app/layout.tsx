@@ -7,7 +7,7 @@ import WhatsAppFab from '@/components/WhatsAppFab'
 import { SITE } from '@/lib/site'
 import './globals.css'
 
-// Fontes temporárias, trocadas quando o design system do Antigravity chegar.
+// Fontes do design system (Barlow Condensed nos títulos, Inter no corpo).
 const display = Barlow_Condensed({ subsets: ['latin'], weight: ['600', '700'], variable: '--font-display-fam', display: 'swap' })
 const body = Inter({ subsets: ['latin'], variable: '--font-body-fam', display: 'swap' })
 
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#b4380f',
+  themeColor: '#0b2a1a',
   width: 'device-width',
   initialScale: 1,
 }

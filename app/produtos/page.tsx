@@ -1,5 +1,6 @@
 import JsonLd from '@/components/JsonLd'
 import CatalogoFiltro from '@/components/CatalogoFiltro'
+import TopoPagina from '@/components/TopoPagina'
 import { schemaMigalhas } from '@/lib/schema'
 import { metaPagina } from '@/lib/seo'
 
@@ -11,18 +12,20 @@ export const metadata = metaPagina({
 
 export default function Produtos() {
   return (
-    <div className="mx-auto max-w-6xl px-5 py-10">
+    <>
       <JsonLd
         dados={schemaMigalhas([
           { nome: 'Início', caminho: '/' },
           { nome: 'Produtos', caminho: '/produtos' },
         ])}
       />
-      <h1 className="text-5xl font-bold uppercase">Produtos</h1>
-      <p className="mt-2 max-w-xl text-ink-soft">Filtre por categoria ou busque pelo nome. Cada produto tem um botão que abre o WhatsApp da loja.</p>
-      <div className="mt-8">
+      <TopoPagina
+        titulo="Produtos"
+        texto="Filtre por categoria ou busque pelo nome. Cada produto tem um botão que abre o WhatsApp da loja."
+      />
+      <div className="mx-auto max-w-6xl px-5 py-10">
         <CatalogoFiltro />
       </div>
-    </div>
+    </>
   )
 }

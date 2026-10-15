@@ -61,7 +61,7 @@ export default function LeadForm() {
   }
 
   const campo =
-    'min-h-12 w-full rounded-xl border border-line bg-canvas px-4 text-base aria-[invalid=true]:border-brand'
+    'min-h-12 w-full rounded-xl border border-line bg-canvas px-4 text-base aria-[invalid=true]:border-error'
 
   return (
     <form onSubmit={aoEnviar} noValidate className="rounded-[var(--radius-card)] bg-surface p-5 shadow-[var(--shadow-card)] sm:p-7">
@@ -69,7 +69,7 @@ export default function LeadForm() {
         <div>
           <label htmlFor="nome" className="mb-1 block text-sm font-semibold">Nome</label>
           <input id="nome" name="nome" type="text" autoComplete="name" maxLength={120} className={campo} aria-invalid={!!erros.nome} />
-          {erros.nome && <p role="alert" className="mt-1 text-sm text-brand-strong">{erros.nome}</p>}
+          {erros.nome && <p role="alert" className="mt-1 text-sm text-error">{erros.nome}</p>}
         </div>
         <div>
           <label htmlFor="whatsapp" className="mb-1 block text-sm font-semibold">WhatsApp</label>
@@ -85,7 +85,7 @@ export default function LeadForm() {
             className={campo}
             aria-invalid={!!erros.whatsapp}
           />
-          {erros.whatsapp && <p role="alert" className="mt-1 text-sm text-brand-strong">{erros.whatsapp}</p>}
+          {erros.whatsapp && <p role="alert" className="mt-1 text-sm text-error">{erros.whatsapp}</p>}
         </div>
         <div>
           <label htmlFor="interesse" className="mb-1 block text-sm font-semibold">O que você procura?</label>
@@ -115,17 +115,17 @@ export default function LeadForm() {
               <a href="/politica-de-privacidade" className="underline">política de privacidade</a>.
             </label>
           </div>
-          {erros.aceite && <p role="alert" className="mt-1 text-sm text-brand-strong">{erros.aceite}</p>}
+          {erros.aceite && <p role="alert" className="mt-1 text-sm text-error">{erros.aceite}</p>}
         </div>
 
         <button
           type="submit"
           disabled={enviando}
-          className="min-h-[52px] w-full rounded-full bg-brand px-6 py-3 text-base font-bold text-white hover:bg-brand-strong disabled:cursor-wait disabled:opacity-70"
+          className="min-h-[52px] w-full rounded-full bg-whatsapp px-6 py-3 text-base font-bold text-white hover:bg-whatsapp-strong disabled:cursor-wait disabled:opacity-70"
         >
           {enviando ? 'Enviando...' : 'Enviar contato'}
         </button>
-        {erro && <p role="alert" className="text-center text-sm text-brand-strong">{erro}</p>}
+        {erro && <p role="alert" className="text-center text-sm text-error">{erro}</p>}
       </div>
     </form>
   )

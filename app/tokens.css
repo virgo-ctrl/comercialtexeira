@@ -1,21 +1,33 @@
 /*
- * TOKENS TEMPORÁRIOS.
- * O design system da Comercial Teixeira está sendo produzido pelo agente Antigravity
- * (Comercial Teixeira/Design/design-system-comercial-teixeira.md no vault).
- * Quando ele chegar, só este arquivo muda: cores, fontes, raios e sombras.
- * Nenhum componente usa valor fixo de cor.
+ * TOKENS v2, derivados da logo real da loja (dois verdes em arcos).
+ * Verde da logo #06A24E e verde-limão #A8D23C são cores de GRÁFICO (arcos, faixas, ícones grandes):
+ * #06A24E sobre branco dá 3,34:1 e não serve para texto nem para botão com texto branco.
+ * Para texto e botões use brand-strong (6,89:1 sobre branco) e whatsapp (5,45:1).
+ * Quando o design system v2 do Antigravity chegar, só este arquivo muda.
  */
 @theme {
-  --color-ink: #1b1b1a;
-  --color-ink-soft: #4a4a47;
+  --color-ink: #0f1f16;
+  --color-ink-soft: #46544b;
   --color-surface: #ffffff;
-  --color-canvas: #f4f3f0;
-  --color-line: #dedcd6;
-  --color-brand: #b4380f;
-  --color-brand-strong: #8f2c0c;
-  --color-brand-soft: #fbebe4;
-  --color-whatsapp: #0e6f3a;
-  --color-whatsapp-strong: #0a5a2f;
+  --color-canvas: #f3f7ef;
+  --color-line: #d8e2d2;
+  --color-forest: #0b2a1a;
+  --color-forest-soft: #12402a;
+  --color-on-dark: #ffffff;
+  --color-on-dark-soft: #cfe0d3;
+
+  --color-brand: #06a24e;
+  --color-brand-strong: #05683a;
+  --color-brand-soft: #e3f3e6;
+  --color-lime: #a8d23c;
+  --color-lime-soft: #eef6d6;
+
+  --color-whatsapp: #067a3b;
+  --color-whatsapp-strong: #05683a;
+  --color-focus: #05683a;
+  --color-error: #b42318;
+  --color-success: #05683a;
+
   --color-pending-bg: #fff6cf;
   --color-pending-line: #d9a900;
   --color-pending-ink: #5b4600;
@@ -25,5 +37,5 @@
 
   --radius-card: 14px;
   --radius-pill: 9999px;
-  --shadow-card: 0 6px 20px rgba(27, 27, 26, 0.08);
+  --shadow-card: 0 6px 20px rgba(11, 42, 26, 0.08);
 }

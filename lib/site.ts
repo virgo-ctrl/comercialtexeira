@@ -2,12 +2,16 @@
 
 export const PENDENTE = '[CONFIRMAR COM O CLIENTE]'
 
+// Marcadores de pendência só aparecem com SHOW_PENDING=1 (preview e dev). Em produção a variável fica
+// desligada e qualquer dado não confirmado simplesmente não é renderizado.
+export const MOSTRAR_PENDENTES = process.env.SHOW_PENDING === '1'
+
 export const SITE = {
   nome: 'Comercial Teixeira',
   url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://comercialteixeira.com.br').replace(/\/$/, ''),
   descricao:
     'Loja de máquinas e ferramentas em Caruaru, Pernambuco. Atendimento pelo WhatsApp para oficina, agro, piscina, limpeza e construção.',
-  pixelId: '1132095836241889',
+  pixelId: '1165204005839913',
   whatsapp: {
     numero: '5581998159589',
     exibicao: '(81) 99815-9589',

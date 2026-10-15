@@ -1,23 +1,26 @@
 import Link from 'next/link'
 import { CATEGORIAS } from '@/lib/catalogo'
 import { ENDERECO_TEXTO, SITE } from '@/lib/site'
-import Pendente from './Pendente'
+import Logo, { Arcos } from './Marca'
+import { Dado } from './Pendente'
 
 export default function Footer() {
   return (
-    <footer className="mt-16 bg-ink text-white">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:grid-cols-3">
+    <footer className="relative overflow-hidden bg-forest text-on-dark">
+      <Arcos className="pointer-events-none absolute -bottom-24 -right-16 h-80 w-80 opacity-15" />
+      <div className="relative mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:grid-cols-3">
         <div>
-          <p className="font-display text-2xl font-bold uppercase tracking-wide">{SITE.nome}</p>
-          <p className="mt-3 text-sm text-white/80">Máquinas e ferramentas em Caruaru, Pernambuco.</p>
-          <p className="mt-3 text-sm text-white/80">
-            Razão social e CNPJ: <Pendente />
-          </p>
+          <Logo escuro />
+          <p className="mt-4 text-sm text-on-dark-soft">Máquinas e ferramentas em Caruaru, Pernambuco.</p>
+          <div className="mt-3 space-y-1 text-sm text-on-dark-soft">
+            <Dado rotulo="Razão social" valor={SITE.razaoSocial} />
+            <Dado rotulo="CNPJ" valor={SITE.cnpj} />
+          </div>
         </div>
 
         <div>
-          <p className="font-semibold">Categorias</p>
-          <ul className="mt-3 space-y-1 text-sm text-white/80">
+          <p className="font-display text-lg font-bold uppercase tracking-wider text-lime">Categorias</p>
+          <ul className="mt-3 space-y-1 text-sm text-on-dark-soft">
             {CATEGORIAS.map((c) => (
               <li key={c.slug}>
                 <Link href={`/categoria/${c.slug}`} className="inline-block py-1 hover:text-white hover:underline">
@@ -29,8 +32,8 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="font-semibold">Fale com a loja</p>
-          <address className="mt-3 space-y-1 text-sm not-italic text-white/80">
+          <p className="font-display text-lg font-bold uppercase tracking-wider text-lime">Fale com a loja</p>
+          <address className="mt-3 space-y-1 text-sm not-italic text-on-dark-soft">
             <p>{ENDERECO_TEXTO}</p>
             <p>
               WhatsApp:{' '}
@@ -47,13 +50,11 @@ export default function Footer() {
                 @comercialteixeiracaruaru
               </a>
             </p>
-            <p>
-              Horário: <Pendente />
-            </p>
+            <Dado rotulo="Horário" valor={SITE.horario} />
           </address>
         </div>
       </div>
-      <div className="border-t border-white/15 px-5 py-4 text-center text-xs text-white/70">
+      <div className="relative border-t border-white/15 px-5 py-4 text-center text-xs text-on-dark-soft">
         <Link href="/politica-de-privacidade" className="underline">Política de privacidade</Link>
         {' · '}
         {new Date().getFullYear()} {SITE.nome}

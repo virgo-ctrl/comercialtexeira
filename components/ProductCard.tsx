@@ -2,14 +2,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { categoriaPorSlug, type Produto } from '@/lib/catalogo'
 import { mensagemProduto } from '@/lib/whatsapp'
-import { ImagemPendente } from './Pendente'
+import { FotoEmBreve } from './Pendente'
 import WhatsAppLink from './WhatsAppLink'
 import WhatsAppIcon from './WhatsAppIcon'
 
 export default function ProductCard({ produto }: { produto: Produto }) {
   const cat = categoriaPorSlug(produto.categoria)
   return (
-    <article className="flex flex-col overflow-hidden rounded-[var(--radius-card)] bg-surface shadow-[var(--shadow-card)]">
+    <article className="flex h-full flex-col overflow-hidden rounded-[var(--radius-card)] border border-line bg-surface shadow-[var(--shadow-card)]">
       {produto.imagem ? (
         <Image
           src={produto.imagem}
@@ -20,18 +20,18 @@ export default function ProductCard({ produto }: { produto: Produto }) {
           className="aspect-[4/3] w-full object-cover"
         />
       ) : (
-        <ImagemPendente />
+        <FotoEmBreve categoria={produto.categoria} />
       )}
       <div className="flex flex-1 flex-col gap-3 p-4">
-        <p className="text-xs font-semibold uppercase tracking-wider text-brand">{cat?.nome}</p>
-        <h3 className="text-xl font-bold">
-          <Link href={`/produto/${produto.slug}`} className="hover:text-brand">
+        <p className="inline-flex w-fit rounded-full bg-brand-soft px-3 py-1 font-display text-sm font-bold uppercase tracking-wider text-brand-strong">
+          {cat?.nome}
+        </p>
+        <h3 className="text-2xl font-bold uppercase">
+          <Link href={`/produto/${produto.slug}`} className="hover:text-brand-strong">
             {produto.nome}
           </Link>
         </h3>
-        <p className="text-sm text-ink-soft">
-          Valor e disponibilidade: consulte pelo WhatsApp.
-        </p>
+        <p className="text-sm text-ink-soft">Valor e disponibilidade: consulte pelo WhatsApp.</p>
         <WhatsAppLink
           mensagem={mensagemProduto(produto.nome)}
           produto={produto.nome}

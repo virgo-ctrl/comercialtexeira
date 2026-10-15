@@ -21,7 +21,7 @@ export default function CatalogoFiltro({ categoriaInicial }: { categoriaInicial?
 
   const chip = (ativo: boolean) =>
     `min-h-11 rounded-full border px-4 text-sm font-semibold ${
-      ativo ? 'border-brand bg-brand text-white' : 'border-line bg-surface hover:border-brand'
+      ativo ? 'border-brand-strong bg-brand-strong text-white' : 'border-line bg-surface hover:border-brand-strong'
     }`
 
   return (
