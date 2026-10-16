@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   description: SITE.descricao,
   applicationName: SITE.nome,
   formatDetection: { telephone: false },
+  other: {
+    'facebook-domain-verification': '62w4imk8tfheqnhhpupq90gt34qqcl',
+  },
 }
 
 export const viewport: Viewport = {
