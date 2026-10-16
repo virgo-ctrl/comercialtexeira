@@ -26,16 +26,6 @@ export default function Vendedores() {
           { nome: 'Fale com um vendedor', caminho: '/vendedores' },
         ])}
       />
-      <TopoPagina
-        titulo="Fale com um vendedor"
-        texto="Escolha com quem você quer falar. O WhatsApp abre com a mensagem já escrita."
-        migalhas={
-          <>
-            <Link href="/">Início</Link> / Fale com um vendedor
-          </>
-        }
-      />
-
       <div className="mx-auto max-w-5xl px-5 py-10">
         <ul className="grid gap-5 sm:grid-cols-2">
           {VENDEDORES.map((v) => (
@@ -92,6 +82,16 @@ export default function Vendedores() {
           .
         </p>
       </div>
+
+      <TopoPagina
+        titulo="Fale com um vendedor"
+        texto="Escolha com quem você quer falar. O WhatsApp abre com a mensagem já escrita."
+        migalhas={
+          <>
+            <Link href="/">Início</Link> / Fale com um vendedor
+          </>
+        }
+      />
     </>
   )
 }
