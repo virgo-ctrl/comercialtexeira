@@ -28,8 +28,9 @@ export default function Vendedores() {
       />
       <div className="mx-auto max-w-5xl px-5 py-10">
         <ul className="grid gap-5 sm:grid-cols-2">
-          {VENDEDORES.map((v) => (
-            <li key={v.slug}>
+          {VENDEDORES.map((v, i) => (
+            // No celular os cards aparecem invertidos (Vendedores primeiro); no desktop segue a ordem da lista.
+            <li key={v.slug} className={i === 0 ? 'order-2 sm:order-1' : 'order-1 sm:order-2'}>
               <article
                 aria-labelledby={`vendedor-${v.slug}`}
                 className="relative flex h-full flex-col overflow-hidden rounded-[var(--radius-card)] border border-line bg-surface p-6 shadow-[var(--shadow-card)]"
