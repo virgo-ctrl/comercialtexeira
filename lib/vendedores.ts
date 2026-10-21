@@ -17,20 +17,20 @@ export interface Vendedor {
 
 export const VENDEDORES: Vendedor[] = [
   {
-    slug: 'risete-lorena',
-    nome: 'Risete Lorena',
-    papel: 'Vendedora',
+    slug: 'setor-de-vendas',
+    nome: 'Setor de Vendas',
+    papel: 'Atendimento por WhatsApp',
     inicial: 'R',
-    chamar: 'a Risete',
+    chamar: 'o setor de vendas',
     whatsapp: '5581992632885',
     exibicao: '(81) 99263-2885',
   },
   {
-    slug: 'balcao',
-    nome: 'Vendedores do Balcão',
+    slug: 'vendedores',
+    nome: 'Vendedores',
     papel: 'Atendimento no balcão da loja',
     inicial: 'B',
-    chamar: 'o balcão',
+    chamar: 'os vendedores',
     whatsapp: '5581998159589',
     exibicao: '(81) 99815-9589',
   },
